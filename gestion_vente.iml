@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="FacetManager">
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="hibernate_g_stock.cfg.xml" value="3a9dcc3d-b132-44b0-8a65-e8f6b5b32ad3" />
+          <unit-entry name="hibernate_g_vente.cfg.xml" value="3a9dcc3d-b132-44b0-8a65-e8f6b5b32ad3" />
+        </datasource-map>
+        <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate_g_stock.cfg.xml" />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate_g_vente.cfg.xml" />
+      </configuration>
+    </facet>
+  </component>
+</module>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="etu.uae.gestion_vente.entities.Commande" table="Commandes">
+        <id name="codeCmd" column="codeCmd" type="int">
+            <generator class="identity" />
+        </id>
+        <property name="client" column="client" type="java.lang.String"/>
+        <property name="qte" column="qteCmd" type="int"/>
+        <property name="date" column="dateCmd" type="java.util.Date"/>
+
+        <many-to-one name="article" column="codeArt" class="etu.uae.gestion_vente.entities.Article"
+            lazy="false"/>
+    </class>
+</hibernate-mapping>

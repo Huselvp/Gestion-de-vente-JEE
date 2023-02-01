@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "https://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.devMode" value="true"/>
+
+    <constant name="struts.convention.result.path" value="/"/>
+
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="login" class="etu.uae.gestion_vente.handlers.LoginHandler">
+            <result name="success">/login.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="login" type="chain">articles</result>
+        </action>
+        <action name="logout" class="etu.uae.gestion_vente.handlers.LoginHandler"
+            method="logout">
+            <result name="logout" type="chain">login</result>
+        </action>
+        <action name="signup" class="etu.uae.gestion_vente.handlers.UserHandler">
+            <result name="success">/signup.jsp</result>
+            <result name="signedup" type="chain">login</result>
+        </action>
+        <action name="profile" class="etu.uae.gestion_vente.handlers.UserHandler"
+            method="updatePw">
+            <result name="success">/profile.jsp</result>
+            <result name="unauthorized">/unauthorized.jsp</result>
+        </action>
+
+        <action name="addCommande" class="etu.uae.gestion_vente.handlers.CommandeAddHandler"
+                method="addCommande">
+            <result name ="input" type = "redirect">articles </result>
+            <result name ="success" type = "redirect">articles </result>
+            <result name="unauthorized">/unauthorized.jsp</result>
+        </action>
+        <action name="articles" class="etu.uae.gestion_vente.handlers.ArticleHandler"
+                method="listArticles">
+            <result name="success">/articles.jsp</result>
+            <result name="unauthorized">/unauthorized.jsp</result>
+        </action>
+        <action name="getPdf" class="etu.uae.gestion_vente.handlers.CommandeHandler"
+                method="getPdf">
+            <result name="success" type="stream">
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">fis</param>
+                <param name="contentDisposition">attachment;filename="facture.pdf"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        <action name="commandes" class="etu.uae.gestion_vente.handlers.CommandeHandler"
+                method="listCommandes">
+            <result name="success">/commande.jsp</result>
+            <result name="unauthorized">/unauthorized.jsp</result>
+        </action>
+        <action name="gemerateClientPdf" class="etu.uae.gestion_vente.handlers.ClientHandler"
+                method="generateClientPdf">
+            <result name="success" type="stream">
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">fis</param>
+                <param name="contentDisposition">attachment;filename="facture.pdf"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        <action name="clients" class="etu.uae.gestion_vente.handlers.ClientHandler"
+                method="listClients">
+            <result name="success">/clients.jsp</result>
+            <result name="unauthorized">/unauthorized.jsp</result>
+        </action>
+    </package>
+</struts>
